@@ -61,7 +61,8 @@ int main()
 ///////////////////////Functions body ////////////////////////////////////
 
 void Menu()
-{  system("cls");
+{
+    system("cls");
     system("COLOR 09");
     printf("\n\n\n\n\n\t\t\t\t\t\t\t MENU\n");
     printf("\t\t\t\t\t\t=======================\n");
@@ -123,10 +124,10 @@ void updateBoard (uint8_t*board, uint8_t position, uint8_t value)
 uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
 {
     uint8_t flag =0;
-    if((*symbol!='X')&&(*symbol!='O'))
+    if((*symbol!='X')&&(*symbol!='O'&&*symbol!='x')&&(*symbol!='o'))
     {
 
-        printf("\nWrong Symbol Please Enter (X OR O) \n");
+        printf("\nWrong Symbol Please Enter (X x OR O o) \n");
         flag=1;
         return 1;
 
@@ -175,7 +176,7 @@ void setPlayerConfig(uint8_t *configArray)
     int wrong_entry_flag=1 ;
     while (wrong_entry_flag)
     {
-        printf(" Player 1 Please Enter your Symbol (X OR O)\n");
+        printf(" Player 1 Please Enter your Symbol (X x OR O o)\n");
         fflush(stdin);
         scanf (" %c",&symboal_holder);
         wrong_entry_flag =getPlayerSymbol('1',&symboal_holder) ;
@@ -184,7 +185,7 @@ void setPlayerConfig(uint8_t *configArray)
     wrong_entry_flag=1;
     while (wrong_entry_flag)
     {
-        printf("Player 2 Please Enter your Symbol (X OR O) \n");
+        printf("Player 2 Please Enter your Symbol (X x OR O o) \n");
         fflush(stdin);
         scanf (" %c",&symboal_holder);
         wrong_entry_flag =getPlayerSymbol('2',&symboal_holder) ;
@@ -222,25 +223,25 @@ void getGameState(uint8_t *board,int *gameState )
     }
     //////////////////////////////////////////////////////////////////////////////
 
-    else if  (boardM[1] == 'O' && boardM[2] =='X' && boardM[3] =='O' &&
-              boardM[4] == 'O' && boardM[5] =='X' && boardM[6] =='X'  &&
-              boardM[7] == '7' && boardM[8] =='X' && boardM[9] =='O'  )
+    else if  ((boardM[1] == 'O'|| boardM[1] == 'o' )&&( boardM[2] =='X'||boardM[2] =='x' )&& (boardM[3] =='O'|| boardM[3] =='o' )&&
+              ( boardM[4] == 'O'|| boardM[4] == 'o' )&&( boardM[5] =='X'||boardM[5] =='x' )&&( boardM[6] =='X'|| boardM[6] =='x' ) &&
+              boardM[7] == '7'&& (boardM[8] =='X'|| boardM[8] =='x' )&&( boardM[9] =='O'|| boardM[9] =='o'  ))
     {
         *gameState =1;
 
 
     }
-    else if  (boardM[1] == '1' && boardM[2] =='O' && boardM[3] =='O' &&
-              boardM[4] == 'O' && boardM[5] =='X' && boardM[6] =='X'  &&
-              boardM[7] == 'X' && boardM[8] =='X' && boardM[9] =='O'  )
+    else if  (boardM[1] == '1' &&( boardM[2] =='O'||boardM[2] =='o' )&& (boardM[3] =='O'|| boardM[3] =='o') &&
+              ( boardM[4] == 'O'|| boardM[4] == 'o' )&& (boardM[5] =='X' ||boardM[5] =='x')&& (boardM[6] =='X'||boardM[6] =='x' ) &&
+              ( boardM[7] == 'X'|| boardM[7] == 'x' )&& (boardM[8] =='X' ||boardM[8] =='x')&& (boardM[9] =='O'||boardM[9] =='o' ) )
     {
         *gameState =1;
 
 
     }
-    else if  (boardM[1] == 'O' && boardM[2] =='O' && boardM[3] =='O' &&
-              boardM[4] == 'X' && boardM[5] =='X' && boardM[6] =='O'  &&
-              boardM[7] == '7' && boardM[8] =='O' && boardM[9] =='X'  )
+    else if  ((boardM[1] == 'O' ||boardM[1] == 'o')&&( boardM[2] =='O'|| boardM[2] =='O' )&& (boardM[3] =='O'||boardM[3] =='o') &&
+              (boardM[4] == 'X' ||boardM[4] == 'x')&& (boardM[5] =='X'|| boardM[5] =='x' )&& (boardM[6] =='O'||boardM[6] =='o' )&&
+              boardM[7] == '7' &&( boardM[8] =='O'||boardM[8] =='o') &&( boardM[9] =='X'||boardM[9] =='x' ) )
     {
         *gameState =1;
 
@@ -280,7 +281,7 @@ void loadAndUpdate(uint8_t playerNumber)
         printf("Enter Position \n");
         fflush(stdin);
         scanf(" %d",&pos);
-        if (boardM[pos]=='X'|| boardM[pos]=='O')
+        if (boardM[pos]=='X'|| boardM[pos]=='O'||boardM[pos]=='x'|| boardM[pos]=='o')
         {
             wrong_entry_flag = 1;
             printf("Full place choose another\n");
