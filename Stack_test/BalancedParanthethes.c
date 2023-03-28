@@ -91,7 +91,6 @@ return 0;
 }
 
 
-
 //////////////////////////////////functions body///////////////////////////////////
 void createEmptyStack(ST_stack_t *stack)
 {
@@ -139,13 +138,15 @@ int8_t pop(ST_stack_t *stack, uint8_t *data)
 }
 int8_t printStack(ST_stack_t *stack)
 {
+    int8_t sp_holder=sp;
     stack_status  status;
-    if (sp==-1)
+    if (sp_holder==-1)
     {
         //status =-2;
         status=STACK_EMPTY;
+
     }
-    else if ( sp == STACK_SIZE-1)
+    else if ( sp_holder == STACK_SIZE-1)
     {
         //status =-1;
         status=STACK_FULL;
@@ -154,14 +155,17 @@ int8_t printStack(ST_stack_t *stack)
     {
         status=STACK_OK;
         // status =0;
-        while(sp>-1)
+
+    }
+    if (status==STACK_OK||status==STACK_FULL)
+    {
+        while(sp_holder>-1)
         {
-            printf("%d->| %c\n",sp,(stack->elements[sp]));
-            sp--;
+            printf("%d->| %d\n",sp_holder,(stack->elements[sp_holder]));
+            sp_holder--;
 
         }
     }
-
 
     return status;
 }
@@ -173,11 +177,13 @@ int8_t getStackTop(ST_stack_t *stack, uint8_t *topData)
     {
         // status=-2;
         status=STACK_EMPTY;
+
     }
 
     else
     {
         *topData =stack->elements[sp];
+        // printf("Peek value: %d\n", stack->elements[stack->top]);
         // status =0;
         status=STACK_OK;
     }
@@ -209,6 +215,7 @@ int8_t isFull(ST_stack_t *stack)
     return status;
 
 }
+
 int8_t isBalancedParanthethes(uint8_t *expression)
 {
     int counter=0;

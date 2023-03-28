@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1679979563 source:c:\users\atef\desktop\sprints_c\stack_test_code\stack.c
+	"Stdtyps.h"
+
+1679980248 c:\users\atef\desktop\sprints_c\stack_test_code\stdtyps.h
+
+1679980296 source:c:\users\atef\desktop\sprints_c\stack_test_code\main.c
+	<stdio.h>
+	"Stdtyps.h"
+	"stack.h"
+
+1679976102 c:\users\atef\desktop\sprints_c\stack_test_code\stack.h
+
