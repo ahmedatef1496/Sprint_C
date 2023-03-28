@@ -33,31 +33,62 @@ int8_t isFull(ST_stack_t *stack);
 int8_t isBalancedParanthethes(uint8_t *expression);
 
 //////////////////////////////////////////////////////////////////////////////////////
-int main()
+
+
+void string_scan2(char*str,int maxsize)
 {
-    uint8_t exp[] = {"{(2+3)/(<3+3>*(15-10))}"};
-    int8_t rdata;
-
-    rdata= isBalancedParanthethes(&exp) ;
-
-    if (rdata==-1)
+    int i=0;
+    fflush(stdin);
+    scanf(" %c",&str[i]);
+    for(; str[i]!='\n'&&i<maxsize-1;)
     {
-        printf("not balanced\n",rdata);
-    }
-    else if (rdata==0)
-    {
-        printf("balanced\n",rdata);
-    }
-    else
-    {
-        printf("neither of parentheses is used\n",rdata);
-    }
+        i++;
+        scanf("%c",&str[i]);
 
-    return 0;
+    }
+    str[i]=0;
 }
 
+void array_printchar2(char*arr)
+{
+    int i;
+    for(i=0; arr[i]; i++)
+    {
+        printf("%c",arr[i]);
+    }
+
+    printf("\n--------------------------------------------\n");
+}
+int main()
+{
+    uint8_t exp[50] ;
+    int8_t rdata;
+    while(1)
+    {
+        printf("Enter exp\n");
+        string_scan2(&exp,50);
+//array_printchar2(&exp);
 
 
+        rdata= isBalancedParanthethes(&exp) ;
+
+        if (rdata==-1)
+        {
+            printf("not balanced\n",rdata);
+        }
+        else if (rdata==0)
+        {
+            printf("balanced\n",rdata);
+        }
+        else
+        {
+            printf("neither of parentheses is used\n",rdata);
+        }
+
+
+    }
+return 0;
+}
 
 
 
@@ -69,7 +100,7 @@ void createEmptyStack(ST_stack_t *stack)
 int8_t push(ST_stack_t *stack, uint8_t data)
 {
     stack_status status;
-    if ( sp == STACK_SIZE)
+    if ( sp == STACK_SIZE-1)
     {
         //status =-1;
         status=STACK_FULL;
@@ -114,7 +145,7 @@ int8_t printStack(ST_stack_t *stack)
         //status =-2;
         status=STACK_EMPTY;
     }
-    else if ( sp == STACK_SIZE)
+    else if ( sp == STACK_SIZE-1)
     {
         //status =-1;
         status=STACK_FULL;
@@ -170,7 +201,7 @@ int8_t isFull(ST_stack_t *stack)
 {
     stack_status status;
 
-    if (sp==STACK_SIZE)
+    if (sp==STACK_SIZE-1)
     {
         // status=-2;
         status=STACK_FULL;
@@ -207,11 +238,12 @@ int8_t isBalancedParanthethes(uint8_t *expression)
     ////////////////////////////////////////////////////////////////////
     counter=0;
     while (expression[counter])
-    {
+    { //printf("%c \n",expression[counter]);
         pop_return=0;
         if (expression[counter] == '{' ||expression[counter] == '(' )
         {
             push(&stackH, expression[counter]);
+            //printf("here1\n");
         }
 
         else if (expression[counter] == '}' || expression[counter] == ')' )
@@ -220,11 +252,13 @@ int8_t isBalancedParanthethes(uint8_t *expression)
             if (isEmpty(&stackH)==STACK_EMPTY)
             {
                 flag = -1; //unbalanced
+               // printf("here2\n");
             }
             else
             {
 
                 pop(&stackH,&pop_return);
+              //  printf("here3\n");
 
 
                 if (pop_return == '(' && expression[counter] == ')')
@@ -232,6 +266,7 @@ int8_t isBalancedParanthethes(uint8_t *expression)
 
 
                     flag= 0; //balanced
+                   // printf("here4\n");
                 }
                 else if (pop_return == '{' && expression[counter] == '}')
                 {
@@ -240,6 +275,7 @@ int8_t isBalancedParanthethes(uint8_t *expression)
                 else
                 {
                     flag=  -1;
+                   // printf("here5\n");
 
                 }
 
@@ -257,6 +293,7 @@ int8_t isBalancedParanthethes(uint8_t *expression)
         else
         {
             flag=-1;//unbalanced
+            //printf("here6\n");
         }
     }
     return flag ;
