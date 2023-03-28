@@ -123,50 +123,97 @@ void updateBoard (uint8_t*board, uint8_t position, uint8_t value)
 
 uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
 {
-    uint8_t flag =0;
-    if((*symbol!='X')&&(*symbol!='O'&&*symbol!='x')&&(*symbol!='o'))
+    uint8_t symboal_holder ,flag =0;
+    printf(" Player %c Please Enter your Symbol (X x OR O o)\n",playerNumber);
+    fflush(stdin);
+    scanf (" %c",&symboal_holder);
+    if((symboal_holder!='X')&&(symboal_holder!='O'&&symboal_holder!='x')&&(symboal_holder!='o'))
     {
 
         printf("\nWrong Symbol Please Enter (X x OR O o) \n");
         flag=1;
         return 1;
-
-
     }
     if (playerNumber=='1')
     {
-
-        if(*symbol==Player2_S)
+        if (symboal_holder=='x'||symboal_holder=='X')
         {
-            printf("\nUsed Symbol\n");
-            flag=1;
-            return 1;
+
+            if (Player2_S=='x'||Player2_S=='X')
+            {
+                printf("\nUsed Symbol\n");
+                flag=1;
+                return 1;
+            }
+            else
+            {
+                Player1_S=symboal_holder;
+                *symbol=symboal_holder;
+                flag=0;
+                return 0;
+            }
+        }
+        else if (symboal_holder=='o'||symboal_holder=='O')
+        {
+
+            if (Player2_S=='o'||Player2_S=='O')
+
+            {
+                printf("\nUsed Symbol\n");
+                flag=1;
+                return 1;
+            }
+
+            else
+            {
+                Player1_S=symboal_holder;
+                *symbol=symboal_holder;
+                  flag=0;
+                return 0;
+            }
 
         }
-        else
-        {
-            Player1_S=*symbol;
-            printf("\nYour Symbol : %c\n",*symbol);
-        }
+
     }
-    if (playerNumber=='2')
+    else if (playerNumber=='2')
     {
-        if(*symbol==Player1_S)
+        if (symboal_holder=='x'||symboal_holder=='X')
         {
 
-            printf("\nUsed Symbol\n");
-            flag=1;
-            return 1;
+            if (Player1_S=='x'||Player1_S=='X')
+            {
+                printf("\nUsed Symbol\n");
+                flag=1;
+                return 1;
+            }
+            else
+            {
+                Player2_S=symboal_holder;
+                *symbol=symboal_holder;
+                  flag=0;
+                return 0;
+            }
         }
-        else
+        else if (symboal_holder=='o'||symboal_holder=='O')
         {
-            Player2_S=*symbol;
-            printf("\nYour Symbol : %c\n",*symbol);
+
+            if (Player1_S=='o'||Player1_S=='O')
+            {
+                printf("\nUsed Symbol\n");
+                flag=1;
+                return 1;
+            }
+            else
+            {
+                Player2_S=symboal_holder;
+                *symbol=symboal_holder;
+                  flag=0;
+                return 0;
+            }
         }
     }
-    flag =0 ;
-    return 0;
-    // return flag ;
+
+
 }
 
 
@@ -176,18 +223,13 @@ void setPlayerConfig(uint8_t *configArray)
     int wrong_entry_flag=1 ;
     while (wrong_entry_flag)
     {
-        printf(" Player 1 Please Enter your Symbol (X x OR O o)\n");
-        fflush(stdin);
-        scanf (" %c",&symboal_holder);
         wrong_entry_flag =getPlayerSymbol('1',&symboal_holder) ;
     }
     configArray[1]=symboal_holder;
     wrong_entry_flag=1;
     while (wrong_entry_flag)
     {
-        printf("Player 2 Please Enter your Symbol (X x OR O o) \n");
-        fflush(stdin);
-        scanf (" %c",&symboal_holder);
+
         wrong_entry_flag =getPlayerSymbol('2',&symboal_holder) ;
     }
     configArray[2]=symboal_holder;
