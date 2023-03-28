@@ -1,10 +1,13 @@
-#include "Stdtyps.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include"stdtypes.h"
+#include "stack.h"
 //////////////////////////////////functions body///////////////////////////////////
 void createEmptyStack(ST_stack_t *stack)
 {
     sp=-1;
 }
+///////////////////////////////////////////////////////////////////////////////////
 int8_t push(ST_stack_t *stack, uint8_t data)
 {
     stack_status status;
@@ -22,7 +25,7 @@ int8_t push(ST_stack_t *stack, uint8_t data)
     }
     return status ;
 }
-
+///////////////////////////////////////////////////////////////////////////////////
 int8_t pop(ST_stack_t *stack, uint8_t *data)
 {
     stack_status status;
@@ -45,6 +48,7 @@ int8_t pop(ST_stack_t *stack, uint8_t *data)
 
     return status;
 }
+///////////////////////////////////////////////////////////////////////////////////
 int8_t printStack(ST_stack_t *stack)
 {
     int8_t sp_holder=sp;
@@ -78,6 +82,7 @@ int8_t printStack(ST_stack_t *stack)
 
     return status;
 }
+///////////////////////////////////////////////////////////////////////////////////
 int8_t getStackTop(ST_stack_t *stack, uint8_t *topData)
 {
     stack_status status;
@@ -101,6 +106,7 @@ int8_t getStackTop(ST_stack_t *stack, uint8_t *topData)
 
     return status;
 }
+///////////////////////////////////////////////////////////////////////////////////
 int8_t isEmpty(ST_stack_t *stack)
 {
     stack_status status;
@@ -112,6 +118,7 @@ int8_t isEmpty(ST_stack_t *stack)
     }
     return status;
 }
+///////////////////////////////////////////////////////////////////////////////////
 int8_t isFull(ST_stack_t *stack)
 {
     stack_status status;
@@ -124,3 +131,4 @@ int8_t isFull(ST_stack_t *stack)
     return status;
 
 }
+///////////////////////////////////////////////////////////////////////////////////
