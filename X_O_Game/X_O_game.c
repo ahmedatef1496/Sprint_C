@@ -29,7 +29,8 @@ int main()
     {
         Menu();
         int Option;
-        scanf("%d",&Option);
+        scanf(" %d",&Option);
+        fflush(stdin);
         switch(Option)
         {
         case 0:
@@ -90,6 +91,7 @@ void GoBackOrExit()
     printf(" Go back(b)? or Exit(0)?: ");
     fflush(stdin);
     scanf(" %c",&Option);
+    fflush(stdin);
     if(Option == '0')
     {
         ExitProject();
@@ -123,7 +125,7 @@ void updateBoard (uint8_t*board, uint8_t position, uint8_t value)
 
 uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
 {
-    uint8_t symboal_holder ,flag =0;
+    uint8_t symboal_holder='A' ,flag =0;
     printf(" Player %c Please Enter your Symbol (X x OR O o)\n",playerNumber);
     fflush(stdin);
     scanf (" %c",&symboal_holder);
@@ -366,7 +368,6 @@ void play_X_O()
 {
     int gameResult = 2;
     //int playCount = 0;
-    int updationResult = 1;
     uint8_t playerNumberM='1';
     system("cls");
     drawBoard(boardM);
@@ -377,7 +378,6 @@ void play_X_O()
         {
             // player 1
             playerNumberM='1';
-            // playerSign=Player1_S
             Player_sign=Player1_S;
             printf("\nPlayer 1 [ %c ] : \n",Player1_S);
         }
@@ -385,7 +385,6 @@ void play_X_O()
         {
             // player 2
             playerNumberM='2';
-            // playerSign=Player2_S
             Player_sign=Player2_S;
             printf("\nPlayer 2 [ %c ] : \n",Player2_S);
 
@@ -399,7 +398,7 @@ void play_X_O()
             printf("\n\t ** Player %c Won!! **\n\n",Player_sign );
 
             GoBackOrExit();
-            continue ;
+           // continue ;
 
 
 
@@ -409,7 +408,7 @@ void play_X_O()
             printf("\t *** Draw  Game Over!! ***\n");
 
             GoBackOrExit();
-            continue ;
+            //continue ;
 
 
 
@@ -435,5 +434,5 @@ void reset_game()
     boardM[9]='9';
     playCount=0;
     Player1_S='A';
-    Player1_S='B';
+    Player2_S='B';
 }
