@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1680309145 source:c:\users\atef\desktop\sprints_c\payment\terminal.c
+	"string.h"
+	"stdtyps.h"
+	"terminal.h"
+
+1680123654 c:\users\atef\desktop\sprints_c\payment\stdtyps.h
+
+1680305401 c:\users\atef\desktop\sprints_c\payment\terminal.h
+	"card.h"
+
+1680304622 source:c:\users\atef\desktop\sprints_c\payment\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"stdtyps.h"
+	"app.h"
+
+1680304881 c:\users\atef\desktop\sprints_c\payment\terminal_test.h
+
+1680305094 source:c:\users\atef\desktop\sprints_c\payment\terminal_test.c
+	"stdtyps.h"
+	"terminal.h"
+
+1680207283 c:\users\atef\desktop\sprints_c\payment\app.h
+
+1680307944 source:c:\users\atef\desktop\sprints_c\payment\app.c
+	"stdtyps.h"
+	"server.h"
+	"app.h"
+
+1680304252 source:c:\users\atef\desktop\sprints_c\payment\card.c
+	"card.h"
+
+1680304515 c:\users\atef\desktop\sprints_c\payment\card.h
+	"stdtyps.h"
+	"stdio.h"
+	"string.h"
+
+1680307602 source:c:\users\atef\desktop\sprints_c\payment\server.c
+	"server.h"
+	"stddef.h"
+	"stdio.h"
+	"string.h"
+
+1680304540 c:\users\atef\desktop\sprints_c\payment\server.h
+	"card.h"
+	"terminal.h"
+	"stdtyps.h"
+
