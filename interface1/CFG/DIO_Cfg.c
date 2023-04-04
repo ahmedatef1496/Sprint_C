@@ -1,7 +1,7 @@
 /*
  * DIO_Cfg.c
  *
- * Created: 4/2/2023 2:56:08 PM
+ * Created: 2/4/2023 2:56:08 PM
  *  Author: atef
  */ 
 
@@ -37,7 +37,7 @@ const DIO_PinStatus_type  PinsStatusArray[TOTAL_PINS]={
 	OUTPUT,		 /* Port C Pin 7 */
 	OUTPUT,		 /* Port D Pin 0 */
 	OUTPUT,		 /* Port D Pin 1 */
-    OUTPUT,      /* Port D Pin 2 /INT0*/
+        OUTPUT,      /* Port D Pin 2 /INT0*/
 	OUTPUT,      /* Port D Pin 3 / INT1 */
 	OUTPUT,		 /* Port D Pin 4  OC1B*/
 	OUTPUT,		 /* Port D Pin 5 OC1A*/
