@@ -13,6 +13,7 @@
 #include "led.h"
 
 void app_start();
+void app_start2();
 
 
 #endif /* APP_H_ */
