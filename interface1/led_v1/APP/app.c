@@ -9,11 +9,8 @@
 #include "app.h"
 
  
-  void app_start()
-  {   LED_init(LED1);
-	  LED_init(LED2);
-	  LED_init(LED3);
-	  LED_init(LED4);
+  void app_start_v1()
+  {   
 	  int led=0 ,flag =0;
 	  DIO_PinVoltage_type data=HIGH;
 	  while(1)
@@ -32,7 +29,7 @@
 				  LED_on(LED1+led);
 				  led++;
 				  
-				 _delay_ms(300) ;  //busy wait
+				 _delay_ms(300) ;  
 			  }
 		  }
 		  led=3;
@@ -48,7 +45,7 @@
 					  flag=0;
 					  continue;
 				  }
-				  _delay_ms(300) ;  //busy wait
+				  _delay_ms(300) ;  
 			  }
 		  }
 		  _delay_ms(300);
@@ -58,11 +55,8 @@
   }
   
   ////////////////////////////////////////////
-  void app_start2()
-  {   LED_init(LED1);
-	  LED_init(LED2);
-	  LED_init(LED3);
-	  LED_init(LED4);
+  void app_start_v1_2()
+  { 
 	  int led=0 ,flag =0;
 	  while(1)
 	  {
@@ -105,5 +99,17 @@
 	  }
   }
   
-  
-  
+ 
+ 
+
+
+ void app_init(void)
+ {
+	 LED_init(LED1);
+	 LED_init(LED2);
+	 LED_init(LED3);
+	 LED_init(LED4);
+	 BUTTON_init(button1);
+	 BUTTON_init(button2);
+	  	
+ }

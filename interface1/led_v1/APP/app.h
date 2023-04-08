@@ -11,9 +11,13 @@
 
 #include "button.h"
 #include "led.h"
+#include "EX_Interrupt.h"
 
-void app_start();
-void app_start2();
+
+void app_start_v1(void);
+void app_start_v1_2(void);
+
+ void app_init(void);
 
 
 #endif /* APP_H_ */
