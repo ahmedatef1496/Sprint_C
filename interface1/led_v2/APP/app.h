@@ -14,8 +14,7 @@
 #include "EX_Interrupt.h"
 
 
-void app_start_v1(void);
-void app_start2(void);
+
 void app_start_v2 (void);
  void app_init(void);
 
