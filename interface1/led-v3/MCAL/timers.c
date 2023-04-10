@@ -122,49 +122,7 @@ void TIMER0_Init(Timer0Mode_type mode)
 }
 
 
-void timer_delay(u16 desiredDelay)
-{
-    double systemClock = F_CPU;
-    double oneTickTime = (8 / systemClock) * 1000; // in ms
-    double maxDelay = oneTickTime * 256; // in ms
-    int overflowsCount = ceil(desiredDelay / maxDelay); 
-    u8 timerInitValue;
-    if (overflowsCount > 1)
-    {
-        timerInitValue = (u8)(256 - ((desiredDelay - (maxDelay * (overflowsCount - 1))) / oneTickTime));
-    }
-    else
-    {
-        timerInitValue = floor((maxDelay - desiredDelay)/oneTickTime); 
-    }
-    timer_setTimerValue(timerInitValue);
 
-    timer_start(TIMER0_SCALER_8);
-
-    int currentOverflowNumber = 0;
-    do{
-        while((READ_BIT(TIFR, 0)) == 0);
-        currentOverflowNumber++;
-        SET_BIT(TIFR, 0);
-    } while (currentOverflowNumber < overflowsCount);
-    timer_reset();
-}
- void TIMER0_OV_InterruptEnable(void)
- {
-	 SET_BIT(TIMSK,TOIE0);
- }
- void TIMER0_OV_InterruptDisable(void)
- {
-	 CLR_BIT(TIMSK,TOIE0);
- }
- void TIMER0_OC_InterruptEnable(void)
- {
-	 SET_BIT(TIMSK,OCIE0);
- }
- void TIMER0_OC_InterruptDisable(void)
- {
-	 CLR_BIT(TIMSK,OCIE0);
- }
  ////////////////////////////////////////////Timer 0 Call Back functions///////////////////////////////////////
  void TIMER0_OV_SetCallBack(void(*LocalFptr)(void))
  {
