@@ -18,9 +18,6 @@ typedef struct ST_BLINKING_t {
 	u16 toff;
 }ST_BLINKING_t;
 
-void app_start_v1(void);
-void app_start2(void);
-void app_start_v2 (void);
  void app_init(void);
  void app_start_v3 (void);
 
