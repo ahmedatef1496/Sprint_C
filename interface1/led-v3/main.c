@@ -12,16 +12,9 @@ int main(void)
 
 
 	DIO_Init();
-	//app_start_v1();
 	app_init();
-    app_start_v3();
+        app_start_v3();
 
-
-	while(1)
-	{
-		
-		
-	}
 
 
 }
