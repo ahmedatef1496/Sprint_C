@@ -39,20 +39,20 @@ void set_leds_mode (void)
 
 
 void set_blinking_t_mode (void)
-{    
+{    blinking_time_mode++;
               		switch (blinking_time_mode)
               		{
-	              		case 1:	blinking_times.ton =  100;      blinking_times.toff=900;   blinking_time_mode++;
+	              		case 1:	blinking_times.ton =  100;      blinking_times.toff=900;   //blinking_time_mode++;
 	              		break;
-	              		case 2:	blinking_times.ton  = 200;	 blinking_times.toff=800;  blinking_time_mode++;
+	              		case 2:	blinking_times.ton  = 200;	 blinking_times.toff=800;  //blinking_time_mode++;
 	              		break;
-	              		case 3:	blinking_times.ton  = 300;	 blinking_times.toff=700;  blinking_time_mode++;
+	              		case 3:	blinking_times.ton  = 300;	 blinking_times.toff=700;  //blinking_time_mode++;
 	              		break;
-	              		case 4:	blinking_times.ton  = 500;	 blinking_times.toff=500;  blinking_time_mode++;
+	              		case 4:	blinking_times.ton  = 500;	 blinking_times.toff=500;  //blinking_time_mode++;
 	              		break;
-	              		case 5:	blinking_times.ton  = 800;	 blinking_times.toff=200;  blinking_time_mode++;
+	              		case 5:	blinking_times.ton  = 800;	 blinking_times.toff=200;  //blinking_time_mode++;
 	              		break;
-	              		default:blinking_times.ton =  100;       blinking_times.toff=900;  blinking_time_mode=1;
+	              		default:blinking_times.ton =  100;       blinking_times.toff=900;  //blinking_time_mode=1;
 	              		break;
               		}
 }
